@@ -48,13 +48,16 @@ const tiles = {
     "void": [0, 0],
     "empty": [0, 1],
 
-    "gravel": [1, 0],
     "grass": [2, 0],
-    "sand": [3, 0],
+    "dirt": [6, 0],
     "stone": [4, 0],
-    "water": [5, 0],
-    "dirt": [6, 0]
 
+    "sand": [3, 0],
+    "gravel": [1, 0],
+    "snow": [1, 1],
+
+    "water": [5, 0]
+    
 }
 
 
@@ -163,6 +166,9 @@ for(let x = 1; x <= columns; ++x) {
                 tileClick(x, y);
             }
         }.bind(null, x, y));
+        id(`tile-${x}-${y}`).addEventListener("mousedown", function(x, y) {
+            tileClick(x, y);
+        }.bind(null, x, y));
     }
 }
 
@@ -173,6 +179,7 @@ moveCamera(100, 100);
 
 let selectorTiles = "";
 for(const [ID, location] of Object.entries(tiles)) {
+    if(ID == "void") { continue; }
     selectorTiles += `
         <button
             style="background-position-x: calc(-${location[0]} * 2em); background-position-y: calc(-${location[1]} * 2em)"
@@ -183,11 +190,18 @@ for(const [ID, location] of Object.entries(tiles)) {
 id("menu-select").innerHTML = selectorTiles;
 
 for(const [ID, location] of Object.entries(tiles)) {
+    if(ID == "void") { continue; }
     id(`selector-${ID}`).addEventListener("click", function(ID) {
         selectTile(ID);
     }.bind(null, ID));
 }
 
+
+// intro
+
+id("intro").addEventListener("click", () => {
+    id("intro").style.display = "none";
+});
 
 
 // #endregion
@@ -261,20 +275,20 @@ function tick(givenX, givenY) {
             break;
 
         // fall down diagonally too
-        case "sand":
+        case "sand": case "gravel": case "snow":
             if(newMap[x][y + 1] == "empty") {
                 newMap[x][y] = "empty";
-                newMap[x][y + 1] = "sand";
+                newMap[x][y + 1] = tile;
             } else {
 
                 // try chosen direction first, then the other direction
                 let direction = Math.random() < 0.5? -1: 1;
                 if(newMap[x + direction][y + 1] == "empty") {
                     newMap[x][y] = "empty";
-                    newMap[x + direction][y + 1] = "sand";
+                    newMap[x + direction][y + 1] = tile;
                 } else if(newMap[x - direction][y + 1] == "empty") {
                     newMap[x][y] = "empty";
-                    newMap[x - direction][y + 1] = "sand";
+                    newMap[x - direction][y + 1] = tile;
                 }
 
             }

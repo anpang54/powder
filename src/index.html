@@ -9,7 +9,7 @@
 <body>
     <div id="menu-topleft" class="menu">
         <h1>AP's Powder Simulator</h1>
-        v0.1.0 (24 Sep 2025)
+        v0.1.1 (24 Sep 2025)
     </div>
     <div id="menu-topright" class="menu">
         Camera: X: <span id="camera-x"></span>, Y: <span id="camera-y"></span>
@@ -17,6 +17,28 @@
         Cursor: X: <span id="cursor-x"></span>, Y: <span id="cursor-y"></span>
     </div>
     <div id="menu-select" class="menu">
+    </div>
+    <div id="intro">
+        <div id="menu-intro" class="menu">
+            <h2>Welcome!</h2>
+            <p>
+                This is Anpang's Powder Simulator.
+            </p>
+            <p>
+                You are given a 320x320 square canvas where you can place things like dirt, sand, water, etc.
+                Those tiles follow physics, so they will fall down due to gravity.
+            </p>
+            <p>
+                The controls are simple: click to place tiles and arrow keys to move.
+                Hold shift to place more tiles or move more.
+                <b>This game currently does not work well on mobile!</b>
+            </p>
+            <p>
+                This game is very new and experimental, and it's also open source.
+                If you find bugs, please report them <a href="https://github.com/anpang54/powder">here</a>.
+            </p>
+            <b id="start">Click anywhere to start!</b>
+        </div>
     </div>
     <div id="canvas">
     </div>

@@ -67,6 +67,33 @@ h1{
 .selected{ border: 2px solid red; }
 
 
+/* intro */
+
+#intro{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(1px);
+    z-index: 2;
+    cursor: pointer;
+}
+#menu-intro{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 30em;
+    padding: 1.5em 2em 2em 2em;
+    font-size: 1.1em;
+}
+h2{ font-size: 1.75em; }
+b{ text-shadow: 0.5px 0.5px white; }
+#start{ font-size: 1.25em; }
+
+
 /* canvas */
 
 #canvas{
