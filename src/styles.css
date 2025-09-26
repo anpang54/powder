@@ -103,8 +103,8 @@ b{ text-shadow: 0.5px 0.5px white; }
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(calc(100vw / 1em), 1em);
-    grid-template-rows: repeat(calc(100vw / 1em), 1em);
+    grid-auto-rows: 1em;
+    grid-auto-columns: 1em;
 }
 #canvas > div{
     background-image: url(sprites.png);
